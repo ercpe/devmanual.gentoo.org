@@ -10,18 +10,6 @@ inaccuracies, omissions, typos and the occasional outright lie. The
 intent is to make a handbook giving developers and users correct,
 detailed, up to date technical content.
 </p>
-<dl>
-    <dt>Contributors</dt>
-    <dd>
-        <p>
-            Ciaran McCreesh, Grant Goodyear, Aaron Walker, Robert Coie,
-            Tom Martin, Paul Varner, Ilya Volynets-Evenbakh,
-            Diego Pettenò, Fernando J. Pereda, Simon Stelling, Alin Dobre,
-            Joseph Jezak, Tim Yamin, Mark Loeser, Petteri Räty, Markos
-            Chandras, Mike Pagano, Julian Ospald, Ulrich Müller
-        </p>
-    </dd>
-</dl>
 <p>
 Contributions are encouraged. See the <uri link="::appendices/contributing"/>
 section for how to get started. If you have any corrections, suggestions or
@@ -30,6 +18,7 @@ and file a <uri link="https://bugs.gentoo.org/enter_bug.cgi?product=Doc%20Other;
 The <uri link="::appendices/contributors"/>
 section lists specific contributions to this manual.
 </p>
+<p>Users that are interested in becoming a Gentoo Developer are encouraged to also read the <uri link="http://www.gentoo.org/proj/en/devrel/handbook/handbook.xml">Gentoo Developer Handbook</uri>.</p>
 </body>
 
 <section>

@@ -20,15 +20,15 @@ developers may not be familiar with.
 
 <p>
 Before writing a new ebuild, check 
-<uri link="http://bugs.gentoo.org/">bugs.gentoo.org</uri> 
+<uri link="https://bugs.gentoo.org/">bugs.gentoo.org</uri> 
 to see if an ebuild has already been written for the package, but has not yet 
 been added to the Portage tree.  Go to <uri 
-link="http://bugs.gentoo.org/">bugs.gentoo.org</uri>, choose query and select 
+link="https://bugs.gentoo.org/">bugs.gentoo.org</uri>, choose query and select 
 Advanced Search; as product select <e>Gentoo Linux</e>, as component select 
 <e>ebuilds</e>.  In the search field put the name of the ebuild and as status 
 select NEW, ASSIGNED, REOPENED and RESOLVED (RESOLVED is important), then 
 submit the query.  For you lazy people, click <uri 
-link="http://bugs.gentoo.org/query.cgi?product=Gentoo%20Linux&amp;component=Ebuilds&amp;bug_status=UNCONFIRMED&amp;bug_status=NEW&amp;bug_status=ASSIGNED&amp;bug_status=REOPENED&amp;bug_status=RESOLVED">here</uri>.
+link="https://bugs.gentoo.org/query.cgi?product=Gentoo%20Linux&amp;component=Ebuilds&amp;bug_status=UNCONFIRMED&amp;bug_status=NEW&amp;bug_status=ASSIGNED&amp;bug_status=REOPENED&amp;bug_status=RESOLVED">here</uri>.
 </p>
 
 <p>
@@ -38,8 +38,9 @@ files, such as patches or sample configuration files.  These types of
 files should be placed in the <path>/usr/portage/mycat/mypkg/files</path>
 directory to keep the main <path>mycat/mypkg</path> directory uncluttered.
 Exceptions to this rule are for larger patch files (we recommend this for patches
-above 20KB) which should be put onto the Gentoo mirrors so that people
-do not waste excessive amounts of bandwidth and hard drive
+above 20KB) which should be distributed as tarballs via the
+<uri link="::general-concepts/mirrors/#suitable-download-hosts">Gentoo mirror system</uri>
+so that people do not waste excessive amounts of bandwidth and hard drive
 space. Also, you should not add binary (non-ASCII) files to the
 Portage CVS tree. If you need to do this in another CVS tree, for
 example, if you need to add a small PNG graphic for whatever reason,
@@ -233,9 +234,11 @@ the team can keep an eye out for possible keywording mistakes.
 </p>
 
 <p>
-Exotic architectures (like alpha, ia64, s390, sh, sparc, hppa, ppc*) are short on manpower, so it's best if you avoid opening stabilization bugs for them unless it is absolutely necessary (eg, a reverse dependency for your package). More about keywording policies can be found in the <uri link="::keywording">keywording</uri> section.
+Exotic architectures (like alpha, ia64, sparc, hppa, ppc*) are short on manpower, so it's best if you avoid opening stabilization bugs for them unless it is absolutely necessary (eg, a reverse dependency for your package). More about keywording policies can be found in the <uri link="::keywording">keywording</uri> section.
 </p>
-
+<p>
+Some architectures (like m68k, mips, s390, sh) do not maintain a stable keyword. So there is no use in marking a package stable for one of these architectures.
+</p>
 </body>
 </section>
 

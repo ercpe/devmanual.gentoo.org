@@ -76,10 +76,20 @@ and have the same format <d/> the only difference is the name.
 </note>
 
 <p>
-You will see autotools being used variously in both <c>src_unpack</c> and
-<c>src_compile</c>. The QA people prefer it in <c>src_unpack</c> <d/> the rationale is
-that <c>src_unpack</c> handles "getting the package ready to be compiled" <d/> but
-there is no official policy which mandates this.
+  You may see autotools being used in a variety of phase
+  functions. Prior to EAPI2, the QA team preferred that the source
+  code be manipulated in <c>src_unpack</c><d/>the rationale being that
+  <c>src_unpack</c> handles "getting the package ready to be
+  compiled."
+</p>
+
+<p>
+  EAPI2, however, introduced a new phase function: <uri
+  link="::ebuild-writing/functions/src_prepare" />. This is now the
+  appropriate place to manipulate the source code prior to
+  configuration and compilation. In particular, <c>src_prepare</c> is
+  called before <uri link="::ebuild-writing/functions/src_configure"
+  />, which usually expects the <c>configure</c> script to exist.
 </p>
 
 <p>
@@ -87,6 +97,8 @@ The <c>autoreconf</c> tool supposedly runs <c>autoconf</c> (and <c>automake</c>,
 <c>autoheader</c>, <c>aclocal</c>, <c>autopoint</c> and <c>libtoolize</c>) as necessary.
 Sometimes it works. Some packages ship a shell script named <c>autogen.sh</c> which
 does the same thing (this is <e>not</e> related to <c>autogen</c>).
+The autotools.eclass contains helper functions for the stand-alone tools with their
+corresponding names e.g. <c>eautoconf</c> and <c>eautomake</c>.
 </p>
 
 <warning>
@@ -112,22 +124,23 @@ either <c>Makefile.am</c> or <c>configure.ac</c>:
 </p>
 
 <codesample lang="ebuild">
-src_unpack() {
-    unpack ${A}
-    cd "${S}"
+EAPI="5"
 
+inherit autotools
+
+src_prepare() {
     # Remove problematic LDFLAGS declaration
-    sed -i -e '/^LDFLAGS/d' src/Makefile.am
+    sed -i -e '/^LDFLAGS/d' src/Makefile.am || die
 
     # Rerun autotools
     einfo "Regenerating autotools files..."
-    WANT_AUTOCONF=2.5 autoconf || die "autoconf failed"
-    WANT_AUTOMAKE=1.9 automake || die "automake failed"
+    WANT_AUTOCONF=2.5 eautoconf
+    WANT_AUTOMAKE=1.9 eautomake
 }
 
 src_compile() {
     econf $(use_enable nls)
-    emake || die "emake failed"
+    emake
 }
 </codesample>
 
